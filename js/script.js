@@ -7,12 +7,29 @@ CAMPO MINATO
 */
 
 // Setup
-var numMax = 10;
-var numBomb = 2;
-var attempt = numMax - numBomb;
+var numMax;
+var numBomb = 16;
+var attempt;
 var bombList = [];
 var insertList = [];
 var user = 0;
+
+//DIFFICULTY LEVEL
+var level = parseInt(prompt('Choose difficulty level (0, 1, 2)').trim());
+while(isNaN(level) || level < 0 || level > 2){
+    level = parseInt(prompt('Choose difficulty level (0, 1, 2)').trim());
+}
+switch(level){
+    case 0:
+        numMax = 100;
+        break;
+    case 1:
+        numMax = 80;
+        break;
+    case 2:
+        numMax = 50;
+}
+attempt = numMax - numBomb;
 
 // CREATE BOMB LIST
 while(bombList.length < numBomb){
@@ -27,9 +44,9 @@ console.log(bombList); //test
 //GAME MAIN LOOP
 while((insertList.length < attempt) && (!bombList.includes(user))){
     //User Choice
-    user = parseInt(prompt('Enter number from 1 to ' + numMax + '\nAttempt number: ' + insertList.length + ' of ' + attempt));
+    user = parseInt(prompt('Enter number from 1 to ' + numMax + '\nAttempt number: ' + insertList.length + ' of ' + attempt).trim());
     while(isNaN(user) || user < 1 || user > numMax){
-        user = parseInt(prompt('Invalid value.\nEnter number from 1 to ' + numMax));
+        user = parseInt(prompt('Invalid value.\nEnter number from 1 to ' + numMax).trim());
     }
     //Check Choice
     if(bombList.includes(user)){
