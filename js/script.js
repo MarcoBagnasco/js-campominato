@@ -39,7 +39,12 @@ while((insertList.length < attempt) && (!bombList.includes(user))){
     } else{
         insertList.push(user);
     }
+    //Check Attempts
+    if(insertList.length === attempt){
+        alert('You Win!!!');
+    }
 }
+
 
 
 /***********
