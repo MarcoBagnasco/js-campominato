@@ -24,6 +24,15 @@ while(bombList.length < numBomb){
 }
 console.log(bombList); //test
 
+//GAME MAIN LOOP
+while((insertList.length < attempt) && (!bombList.includes(user))){
+    //User Choice
+    user = parseInt(prompt('Insert number from 1 to ' + numMax + '\nAttempt number: ' + insertList.length + ' of ' + attempt));
+    while(isNaN(user) || user < 1 || user > numMax){
+        user = parseInt(prompt('Invalid value.\nInsert number from 1 to ' + numMax));
+    }
+}
+
 
 /***********
 * FUNCTIONS
