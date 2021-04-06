@@ -27,9 +27,17 @@ console.log(bombList); //test
 //GAME MAIN LOOP
 while((insertList.length < attempt) && (!bombList.includes(user))){
     //User Choice
-    user = parseInt(prompt('Insert number from 1 to ' + numMax + '\nAttempt number: ' + insertList.length + ' of ' + attempt));
+    user = parseInt(prompt('Enter number from 1 to ' + numMax + '\nAttempt number: ' + insertList.length + ' of ' + attempt));
     while(isNaN(user) || user < 1 || user > numMax){
-        user = parseInt(prompt('Invalid value.\nInsert number from 1 to ' + numMax));
+        user = parseInt(prompt('Invalid value.\nEnter number from 1 to ' + numMax));
+    }
+    //Check Choice
+    if(bombList.includes(user)){
+        alert('BOOM!!You lose...\nNumber of attempts: ' + insertList.length);
+    } else if(insertList.includes(user)){
+        alert('Number already entered.\nEnter number from 1 to ' + numMax);
+    } else{
+        insertList.push(user);
     }
 }
 
