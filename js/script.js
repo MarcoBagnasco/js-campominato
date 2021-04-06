@@ -45,6 +45,10 @@ while((insertList.length < attempt) && (!bombList.includes(user))){
     }
 }
 
+// END GAME
+console.log('--- GAME OVER ---');
+console.log('Valid number entered: ' + insertList);
+console.log('Number of attempts: ' + insertList.length);
 
 
 /***********
