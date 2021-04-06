@@ -13,3 +13,21 @@ var attempt = numMax - numBomb;
 var bombList = [];
 var insertList = [];
 var user = 0;
+
+// CREATE BOMB LIST
+while(bombList.length < numBomb){
+    var bomb = randomNumber(numMax);
+
+    if(!bombList.includes(bomb)){
+        bombList.push(bomb);
+    }
+}
+console.log(bombList); //test
+
+
+/***********
+* FUNCTIONS
+************/
+function randomNumber(max){
+    return Math.floor(Math.random() * max) + 1;
+}
