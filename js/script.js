@@ -15,10 +15,10 @@ var insertList = [];
 var user = 0;
 
 //DIFFICULTY LEVEL
-var level = parseInt(prompt('Choose difficulty level (0, 1, 2)').trim());
-while(isNaN(level) || level < 0 || level > 2){
-    level = parseInt(prompt('Choose difficulty level (0, 1, 2)').trim());
-}
+do{
+    var level = parseInt(prompt('Choose difficulty level (0, 1, 2)').trim());
+} while(!validNumber(level, 0, 2));
+
 switch(level){
     case 0:
         numMax = 100;
@@ -45,7 +45,7 @@ console.log(bombList); //test
 while((insertList.length < attempt) && (!bombList.includes(user))){
     //User Choice
     user = parseInt(prompt('Enter number from 1 to ' + numMax + '\nAttempt number: ' + insertList.length + ' of ' + attempt).trim());
-    while(isNaN(user) || user < 1 || user > numMax){
+    while(!validNumber(user, 1, numMax)){
         user = parseInt(prompt('Invalid value.\nEnter number from 1 to ' + numMax).trim());
     }
     //Check Choice
@@ -71,6 +71,26 @@ console.log('Number of attempts: ' + insertList.length);
 /***********
 * FUNCTIONS
 ************/
+/**
+ * Create random number from 1 to max
+ * @param {number} max 
+ * @returns 
+ */
 function randomNumber(max){
     return Math.floor(Math.random() * max) + 1;
+}
+
+/**
+ * Validate number in a range
+ * @param {number} num number to validate
+ * @param {number} min number min
+ * @param {number} max number max
+ * @returns true if num is a number and is in range
+ */
+function validNumber(num, min, max){
+    if(isNaN(num) || num < min || num > max){
+        return false;
+    } else{
+        return true;
+    }
 }
